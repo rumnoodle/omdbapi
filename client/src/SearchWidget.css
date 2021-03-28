@@ -1,0 +1,25 @@
+#movie-search input[name="search"] {
+  padding: 12px;
+  width: 55%;
+  margin-right: 12px;
+}
+
+#movie-search input[type="submit"] {
+  padding: 12px;
+  background-color: #fff;
+}
+
+#last-search {
+  margin-top: 24px;
+  font-size: 2em;
+}
+
+#error {
+  color: #990000;
+  font-weight: bold;
+}
+
+table {
+  margin-top: 48px;
+  width: 100%;
+}
