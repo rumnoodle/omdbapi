@@ -5,7 +5,7 @@ class SearchWidget extends React.Component {
     return (
       <div id="movie-search">
         <input name="search" type="text" id="search" />
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search" disabled />
       </div>
     );
   }

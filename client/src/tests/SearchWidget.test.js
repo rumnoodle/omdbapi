@@ -15,9 +15,10 @@ describe("SearchWidget", () => {
     ).toEqual(1);
   });
 
-  it("should load submit button", () => {
+  it("should disable submit button when empty search field", () => {
+    const submitButton = widget.find('input[type="submit"]').first();
     expect(
-      widget.find('input[type="submit"]').length
-    ).toEqual(1);
+      submitButton.props().disabled
+    ).toBe(true);
   });
 });
