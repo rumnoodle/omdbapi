@@ -38,5 +38,23 @@ describe("SearchWidget", () => {
         submitButton.props().disabled
       ).toBe(false);
     });
+
+    describe("when deleting the search", () => {
+      const searchValue = "";
+
+      beforeEach(() => {
+        const searchInputField = widget.find('input[name="search"]').first();
+        searchInputField.simulate('change', {
+          target: {value: searchValue}
+        });
+      });
+
+      it("should disable submit button when search field content is deleted", () => {
+        const submitButton = widget.find('input[type="submit"]').first();
+        expect(
+          submitButton.props().disabled
+        ).toBe(true);
+      });
+    });
   });
 });

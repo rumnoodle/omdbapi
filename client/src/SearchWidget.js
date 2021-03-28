@@ -12,6 +12,10 @@ class SearchWidget extends React.Component {
       this.setState({
         disabled: false
       });
+    } else {
+      this.setState({
+        disabled: true
+      });
     }
   }
 
