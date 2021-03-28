@@ -21,4 +21,22 @@ describe("SearchWidget", () => {
       submitButton.props().disabled
     ).toBe(true);
   });
+
+  describe("when making a search", () => {
+    const searchValue = "Imitation Game";
+
+    beforeEach(() => {
+      const searchInputField = widget.find('input[name="search"]').first();
+      searchInputField.simulate('change', {
+        target: {value: searchValue}
+      });
+    });
+
+    it("should enable submit button", () => {
+      const submitButton = widget.find('input[type="submit"]').first();
+      expect(
+        submitButton.props().disabled
+      ).toBe(false);
+    });
+  });
 });
