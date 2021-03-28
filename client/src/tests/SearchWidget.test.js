@@ -123,6 +123,12 @@ describe("SearchWidget", () => {
           widget.state().searchString
         ).toEqual('');
       });
+
+      it("shold show search hits", () => {
+        expect(
+          widget.find('table.hits tbody tr').length
+        ).toBe(3);
+      });
     });
   });
 });

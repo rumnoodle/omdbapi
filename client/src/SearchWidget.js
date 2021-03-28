@@ -38,8 +38,6 @@ class SearchWidget extends React.Component {
         disabled: true
       });
     });
-
-
   }
 
   render() {
@@ -58,6 +56,26 @@ class SearchWidget extends React.Component {
           onClick={this.onSearchSubmit}
         />
         <div id="last-search">Last search: {this.state.lastSearch}</div>
+        <table className="hits">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Release Year</th>
+              <th>Type></th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.state.hits.map((hit) => (
+                <tr key={hit['imdbID']}>
+                  <td>{hit['Title']}</td>
+                  <td>{hit['Year']}</td>
+                  <td>{hit['Type']}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
       </div>
     );
   }
