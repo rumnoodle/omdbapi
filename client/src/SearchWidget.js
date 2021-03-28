@@ -1,6 +1,7 @@
 import React from 'react';
 import API from './API';
 import './SearchWidget.css';
+import SearchResultsWidget from './SearchResultsWidget';
 
 class SearchWidget extends React.Component {
   state = {
@@ -69,26 +70,9 @@ class SearchWidget extends React.Component {
         />
         <div id="error">{this.state.error}</div>
         <div id="last-search">Last search: {this.state.lastSearch}</div>
-        <table className="hits">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Release Year</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.state.hits.map((hit, index) => (
-                <tr key={hit['imdbID'] + '-' + index}>
-                  <td>{hit['Title']}</td>
-                  <td>{hit['Year']}</td>
-                  <td>{hit['Type']}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
+        <SearchResultsWidget
+          hits={this.state.hits}
+        />
       </div>
     );
   }
