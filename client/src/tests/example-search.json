@@ -1,0 +1,27 @@
+{
+Search: [
+{
+Title: "The Imitation Game",
+Year: "2014",
+imdbID: "tt2084970",
+Type: "movie",
+Poster: "https://m.media-amazon.com/images/M/MV5BOTgwMzFiMWYtZDhlNS00ODNkLWJiODAtZDVhNzgyNzJhYjQ4L2ltYWdlXkEyXkFqcGdeQXVyNzEzOTYxNTQ@._V1_SX300.jpg"
+},
+{
+Title: "The Imitation Game",
+Year: "2018–",
+imdbID: "tt8938060",
+Type: "series",
+Poster: "N/A"
+},
+{
+Title: "The Imitation Game",
+Year: "2008",
+imdbID: "tt1632635",
+Type: "movie",
+Poster: "N/A"
+}
+],
+totalResults: "3",
+Response: "True"
+}
