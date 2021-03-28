@@ -104,6 +104,25 @@ describe("SearchWidget", () => {
           widget.state().hits
         ).toEqual(hits['Search']);
       });
+
+      it("should display what last search was", () => {
+        expect(
+          widget.html()
+        ).toContain("Imitation Game");
+      });
+
+      it("should disable search button", () => {
+        const submitButton = widget.find('input[type="submit"]').first();
+        expect(
+          submitButton.props().disabled
+        ).toBe(true);
+      });
+
+      it("should clear search state", () => {
+        expect(
+          widget.state().searchString
+        ).toEqual('');
+      });
     });
   });
 });

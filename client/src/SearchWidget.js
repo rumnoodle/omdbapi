@@ -26,14 +26,20 @@ class SearchWidget extends React.Component {
   }
 
   onSearchSubmit = () => {
-    API.searchMovies(this.state.searchString, (result) => {
+    const searchString = this.state.searchString;
+    API.searchMovies(searchString, (result) => {
       const hits = result['Search'].map((hit) => {
         return hit;
       });
       this.setState({
-        hits: hits
+        hits: hits,
+        lastSearch: searchString,
+        searchString: '',
+        disabled: true
       });
     });
+
+
   }
 
   render() {
@@ -51,6 +57,7 @@ class SearchWidget extends React.Component {
           disabled={this.state.disabled}
           onClick={this.onSearchSubmit}
         />
+        <div id="last-search">Last search: {this.state.lastSearch}</div>
       </div>
     );
   }
