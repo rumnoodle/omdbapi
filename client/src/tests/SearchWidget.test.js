@@ -130,5 +130,28 @@ describe("SearchWidget", () => {
         ).toBe(3);
       });
     });
+
+    describe("when search goes bad", () => {
+      const searchValue = 'the';
+      const response = {
+        Response: 'False',
+        Error: 'Too many results'
+      };
+
+      beforeEach(() => {
+        const submitButton = widget.find('input[type="submit"]').first();
+        submitButton.simulate('click');
+        const invocationArgs = API.searchMovies.mock.calls[0];
+        const callback = invocationArgs[1];
+        callback(response);
+        widget.update();
+      });
+
+      it("should display error message when last search went bad", () => {
+        expect(
+          widget.html()
+        ).toContain(response['Error']);
+      });
+    });
   });
 });

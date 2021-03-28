@@ -27,16 +27,26 @@ class SearchWidget extends React.Component {
 
   onSearchSubmit = () => {
     const searchString = this.state.searchString;
+
     API.searchMovies(searchString, (result) => {
-      const hits = result['Search'].map((hit) => {
-        return hit;
-      });
-      this.setState({
-        hits: hits,
-        lastSearch: searchString,
-        searchString: '',
-        disabled: true
-      });
+      if (result['Response'] === 'False') {
+        const error = `Error when searching: ${result['Error']}`;
+        this.setState({
+          error: error
+        });
+      } else {
+
+        const hits = result['Search'].map((hit) => {
+          return hit;
+        });
+        this.setState({
+          hits: hits,
+          lastSearch: searchString,
+          searchString: '',
+          disabled: true,
+          error: ''
+        });
+      }
     });
   }
 
@@ -47,6 +57,7 @@ class SearchWidget extends React.Component {
           name="search"
           type="text"
           id="search"
+          value={this.state.searchString}
           onChange={this.onSearchChange}
         />
         <input
@@ -55,13 +66,14 @@ class SearchWidget extends React.Component {
           disabled={this.state.disabled}
           onClick={this.onSearchSubmit}
         />
+        <div id="error">{this.state.error}</div>
         <div id="last-search">Last search: {this.state.lastSearch}</div>
         <table className="hits">
           <thead>
             <tr>
               <th>Title</th>
               <th>Release Year</th>
-              <th>Type></th>
+              <th>Type</th>
             </tr>
           </thead>
           <tbody>
