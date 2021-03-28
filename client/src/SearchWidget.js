@@ -78,8 +78,8 @@ class SearchWidget extends React.Component {
           </thead>
           <tbody>
             {
-              this.state.hits.map((hit) => (
-                <tr key={hit['imdbID']}>
+              this.state.hits.map((hit, index) => (
+                <tr key={hit['imdbID'] + '-' + index}>
                   <td>{hit['Title']}</td>
                   <td>{hit['Year']}</td>
                   <td>{hit['Type']}</td>
