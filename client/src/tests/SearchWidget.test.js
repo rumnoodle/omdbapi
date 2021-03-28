@@ -14,4 +14,10 @@ describe("SearchWidget", () => {
       widget.find('input[name="search"]').length
     ).toEqual(1);
   });
+
+  it("should load submit button", () => {
+    expect(
+      widget.find('input[type="submit"]').length
+    ).toEqual(1);
+  });
 });
